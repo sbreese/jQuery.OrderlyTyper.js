@@ -13,6 +13,7 @@ String.prototype.rightChars = function(n){
 (function($) {
   var
     options = {
+      rotateRamdomly    : false,
       highlightSpeed    : 20,
       typeSpeed         : 100,
       clearDelay        : 500,
@@ -33,7 +34,8 @@ String.prototype.rightChars = function(n){
     typeWithAttribute,
     getHighlightInterval,
     getTypeInterval,
-    typerInterval;
+    typerInterval,
+    arrayPosition = 0;
 
   spanWithColor = function(color, backgroundColor) {
     if (color === 'rgba(0, 0, 0, 0)') {
@@ -160,8 +162,8 @@ String.prototype.rightChars = function(n){
         return $.trim(e);
       });
     }
-
-    $e.typeTo(targets[Math.floor(Math.random()*targets.length)]);
+    arrayPosition = (arrayPosition >= targets.length?0:arrayPosition);
+    $e.typeTo(targets[($.typer.options.rotateRamdomly?Math.floor(Math.random()*targets.length):arrayPosition++)]);
   };
 
   // Expose our options to the world.
@@ -244,11 +246,11 @@ String.prototype.rightChars = function(n){
 
   getTypeInterval = function () {
     return $.typer.options.typeSpeed;
-  },
+  };
 
   clearDelay = function () {
     return $.typer.options.clearDelay;
-  },
+  };
 
   typeDelay = function () {
     return $.typer.options.typeDelay;
