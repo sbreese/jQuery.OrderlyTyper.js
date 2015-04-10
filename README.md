@@ -1,4 +1,4 @@
-## Enhanced version of layervault/jquery.typer.js:  Text strings are now rotated in the order they are listed and NOT randomly selected.  This prevents the text strings from repeating and losing the interest of the visitor.
+## Enhanced version of layervault/jquery.typer.js:  Text phrases are now rotated IN ORDER and not selected at RAMDOM.  This prevents the phrases from repeating and losing the interest of the visitor.
 
 ## Usage
 jquery.typer.js can be used one of two ways:
