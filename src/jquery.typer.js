@@ -19,8 +19,8 @@ String.prototype.rightChars = function(n){
       clearDelay        : 500,
       typeDelay         : 200,
       clearOnHighlight  : true,
-      typerDataAttr     : 'data-typer-targets',
-      typerInterval     : 2000
+      OrderlyTyperDataAttr     : 'data-OrderlyTyper-targets',
+      OrderlyTyperInterval     : 2000
     },
     highlight,
     clearText,
@@ -34,7 +34,7 @@ String.prototype.rightChars = function(n){
     typeWithAttribute,
     getHighlightInterval,
     getTypeInterval,
-    typerInterval,
+    OrderlyTyperInterval,
     arrayPosition = 0;
 
   spanWithColor = function(color, backgroundColor) {
@@ -154,43 +154,43 @@ String.prototype.rightChars = function(n){
     }
 
     try {
-      targets = JSON.parse($e.attr($.typer.options.typerDataAttr)).targets;
+      targets = JSON.parse($e.attr($.OrderlyTyper.options.OrderlyTyperDataAttr)).targets;
     } catch (e) {}
 
     if (typeof targets === "undefined") {
-      targets = $.map($e.attr($.typer.options.typerDataAttr).split(','), function (e) {
+      targets = $.map($e.attr($.OrderlyTyper.options.OrderlyTyperDataAttr).split(','), function (e) {
         return $.trim(e);
       });
     }
     arrayPosition = (arrayPosition >= targets.length?0:arrayPosition);
-    $e.typeTo(targets[($.typer.options.rotateRamdomly?Math.floor(Math.random()*targets.length):arrayPosition++)]);
+    $e.typeTo(targets[($.OrderlyTyper.options.rotateRamdomly?Math.floor(Math.random()*targets.length):arrayPosition++)]);
   };
 
   // Expose our options to the world.
-  $.typer = (function () {
+  $.OrderlyTyper = (function () {
     return { options: options };
   })();
 
-  $.extend($.typer, {
+  $.extend($.OrderlyTyper, {
     options: options
   });
 
   //-- Methods to attach to jQuery sets
 
-  $.fn.typer = function() {
+  $.fn.OrderlyTyper = function() {
     var $elements = $(this);
 
     return $elements.each(function () {
       var $e = $(this);
 
-      if (typeof $e.attr($.typer.options.typerDataAttr) === "undefined") {
+      if (typeof $e.attr($.OrderlyTyper.options.OrderlyTyperDataAttr) === "undefined") {
         return;
       }
 
       typeWithAttribute($e);
       setInterval(function () {
         typeWithAttribute($e);
-      }, typerInterval());
+      }, OrderlyTyperInterval());
     });
   };
 
@@ -207,7 +207,7 @@ String.prototype.rightChars = function(n){
     }
 
     if (currentText !== $e.html()) {
-      console.error("Typer does not work on elements with child elements.");
+      console.error("OrderlyTyper does not work on elements with child elements.");
       return $e;
     }
 
@@ -241,22 +241,22 @@ String.prototype.rightChars = function(n){
   //-- Helper methods. These can one day be customized further to include things like ranges of delays.
 
   getHighlightInterval = function () {
-    return $.typer.options.highlightSpeed;
+    return $.OrderlyTyper.options.highlightSpeed;
   };
 
   getTypeInterval = function () {
-    return $.typer.options.typeSpeed;
+    return $.OrderlyTyper.options.typeSpeed;
   };
 
   clearDelay = function () {
-    return $.typer.options.clearDelay;
+    return $.OrderlyTyper.options.clearDelay;
   };
 
   typeDelay = function () {
-    return $.typer.options.typeDelay;
+    return $.OrderlyTyper.options.typeDelay;
   };
 
-  typerInterval = function () {
-    return $.typer.options.typerInterval;
+  OrderlyTyperInterval = function () {
+    return $.OrderlyTyper.options.OrderlyTyperInterval;
   };
 })(jQuery);
