@@ -1,4 +1,4 @@
-## With OrderlyTyper, text phrases are rotated IN ORDER (and not selected at RAMDOM).  This prevents the phrases from repeating and losing the interest of the visitor.
+## With OrderlyTyper, text phrases are rotated IN ORDER (and not selected at random).  This prevents the phrases from repeating and losing the interest of the visitor.
 
 ## Usage
 jquery.OrderlyTyper.js can be used one of two ways:
